@@ -1,32 +1,48 @@
+<?php session_start(); ?>
+
 <?php
-
-function h($s){
-  return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
-}
-
-session_start();
-if (isset($_SESSION['EMAIL'])) {
-  echo 'ようこそ' .  h($_SESSION['EMAIL']) . "さん<br>";
-  echo "<a href='/logout.php'>ログアウトはこちら。</a>";
-  exit;
-}
-
- ?>
+	//customerセッション変数を破棄
+	unset($_SESSION['customer']);
+	//MySQLデータベースに接続する
+	require 'db_connect.php';
+	//SQL文を作る（プレースホルダを使った式）
+	$sql = "select * from customer where login = :login and password = :password";
+	//プリペアードステートメントを作る
+	$stm = $pdo->prepare($sql);
+	//プリペアードステートメントに値をバインドする
+	$stm->bindValue(':login',$_POST['login'],PDO::PARAM_STR);
+	$stm->bindValue(':password',$_POST['password'],PDO::PARAM_STR);
+	//SQL文を実行する
+	$stm->execute();
+	//結果の取得（連想配列で受け取る）
+	$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+	//customerセッションの設定
+	foreach ($result as $row) {
+		$_SESSION['customer'] = [
+			'id' => $row['id'], 'name' => $row['name'],
+			'address' => $row['address'], 'login' => $row['login'],
+			'password' => $row['password']
+		];
+	}
+?>
 
 <!DOCTYPE html>
-<html lang="ja">
- <head>
-   <meta charset="utf-8">
-   <title>Login</title>
- </head>
- <body>
-   <h1>ようこそ、ログインしてください。</h1>
-   <form  action="login.php" method="post">
-     <label for="email">ユーザー名</label>
-     <input type="email" name="email">
-     <label for="password">パスワード</label>
-     <input type="password" name="password">
-     <button type="submit">サインイン</button>
-   </form>
- </body>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン画面</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<?php
+	require 'menu.php';
+	if (isset($_SESSION['customer'])) {
+		echo 'いらっしゃいませ、', $_SESSION['customer']['name'], 'さん。';
+	} else {
+		echo 'ログイン名またはパスワードが違います。';
+	}
+	?>
+</body>
+
 </html>

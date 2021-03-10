@@ -9,6 +9,7 @@
     <title>予約内容入力画面</title>
 </head>
 <body>
+    <?php require 'index.php'; ?>
     <h2>予約内容を入力してください</h2>
     <hr>
     <!-- <?php require ''; ?> -->
@@ -21,12 +22,12 @@
         <tr>    
             <th><label for="num">人数</label></th>
             <td>
-                <input type="radio" name="num" value="1">1
-                <input type="radio" name="num" value="2">2
-                <input type="radio" name="num" value="3">3
-                <input type="radio" name="num" value="4">4
-                <input type="radio" name="num" value="5">5
-                <input type="radio" name="num" value="6">6
+                <label><input type="radio" name="num" value="1">1</label>
+                <label><input type="radio" name="num" value="2">2</label>
+                <label><input type="radio" name="num" value="3">3</label>
+                <label><input type="radio" name="num" value="4">4</label>
+                <label><input type="radio" name="num" value="5">5</label>
+                <label><input type="radio" name="num" value="6">6</label>
             </td>
         </tr>
         <tr><th><td><input type="submit" value="OK"></td></th></tr>

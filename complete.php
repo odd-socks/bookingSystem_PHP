@@ -9,7 +9,9 @@
     <title>予約完了画面</title>
 </head>
 <body>
-
+    <?php
+        require 'db_connect.php';
+    ?>
     <p>予約完了</p>
     <a href="index.php">トップへ戻る</a>
 </body>

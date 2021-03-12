@@ -9,9 +9,6 @@
   <title>コース一覧</title>
 </head>
 <body>
-  <p>デザインの参考にしたサイト<a href="https://www.hotpepper.jp/strJ000170581/course/">https://www.hotpepper.jp/strJ000170581/course/</a></p>
-
-  
 <?php
   require 'db_connect.php';
   //SQL文を作る（プレースホルダを使った式）

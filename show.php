@@ -36,17 +36,7 @@
 	</div>
 
 	<a href="menu.php">戻る</a>
-	
-	
   </div>
   <?php } ?>
-
-
-  
-  
-  
-  
-<br><br><br>
-デザインの参考にしたいページ<a href="https://www.dennys.jp/menu/hamburg/grated-hamburger&fried-shrimp/">https://www.dennys.jp/menu/hamburg/grated-hamburger&fried-shrimp/</a>
 </body>
 </html>

@@ -1,6 +1,16 @@
 <?php
-if (!isset($_POST["num"]))||($_POST["num"]==="") {
-    $error[] = "人数が選択されていません。";
+$gobackURL = "reservation_form.php";
+
+// 文字エンコードの検証
+// if (!cken($_POST)) {
+//     header("Location:{$gobackURL}");
+//     exit();
+// }
+
+$errors = [];
+
+if (!isset($_POST["num"])||(!in_array($_POST["num"], ["1", "2", "3", "4", "5", "6"]))) {
+    $errors[] = "人数が選択されていません。";
 }
 
 // エラーがあったとき
@@ -11,20 +21,22 @@ if (count($errors)>0){
     }
     echo "</ol>";
     echo "<hr>";
-    echo "<a href="reservation_form.html">戻る</a>;
+    echo "<a href=", $gobackURL, ">戻る</a>";
     exit();
 }
-
+// データベースユーザ
 $user = '';
 $password = '';
+// 利用するデータベース
 $dbName = 'testdb';
+// MySQLサーバ
 $host = '';
+// MySQLのDSN文字列
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 ?>
 
-<!-- <?php session_start(); ?> -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,28 +45,30 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     <title>確認画面</title>
 </head>
 <body>
-    <!-- <?php require 'index.php'; ?> -->
-    <table>
-        <tr>
-            <th>名前:</th>
-            <!-- <td><?=$SESSION['customer']['name'] ?></td> -->
-        </tr>
-        <tr>
-            <th>日付:</th>
-            <!-- <td><?=$SESSION['customer']['date'] ?></td> -->
-        </tr>
-        <tr>
-            <th>時間:</th>
-            <!-- <td><?=$SESSION['customer']['time'] ?></td> -->
-        </tr>
-        <tr>
-            <th>人数:</th>
-
-        </tr>
-        <form action="complete.html" method="post">
-            <th><tr><td><input type="submit" value="完了"></td></tr></th>
-        </form>
-    </table>
-    
+<div>
+    <?php
+        require 'db_connect.php';
+        $sql = "INSERT INTO course VALUES (:num)";
+        // プリペアードステートメントを作る
+        $stm = $pdo->prepare($sql);
+        // プレースホルダに値をバインドする
+        $stm->bindValue(':num', $num, PDO::PARAM_STR);
+        // レコード追加後のレコードリストを取得する
+        $sql = "SELECT * FROM course";
+        // プリペアードステートメントを作る
+        $stm = $pdo->prepare($sql);
+        // SQL文を実行する
+        $stm->execute();
+        //結果の取得（連想配列で受け取る）
+        $result = $stm->fetchALL(PDO::FETCH_ASSOC);
+        
+        foreach ($result as $row) {
+            // テーブルに入れる
+            echo "<tr>";
+            echo "<td>", ($row['num']), "</td>";
+            echo "</tr>";
+        }
+    ?>
+</div>
 </body>
 </html>

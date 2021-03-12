@@ -1,74 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メニュー詳細</title>
-    </head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/show.css">
+  <title>Document</title>
+</head>
 <body>
-    <h2>メニュー詳細</h2>
-    <h3 id="1">【食べ放題】♦♢DXコース♢♦3500円(税込)</h3>
-    <img src="images/meat1.jpg">
-    <h5>デザートも付いた、当店メニューを食べつくせる贅沢なコースです♪</h5>
-    <h4>コース料金</h4> <h3>3,500円(税込)</h3>
-    <h4>コース品数</h4>
-    <h3>コース内容</h3>
-    <h5>♢♦♢♦肉メニュー♢♦♢♦<br>
-    牛タン<br>
-    牛上トロタン<br>
-    中落カルビ(タレ・塩)<br>
-    牛ミノ(塩・にんにく塩・激辛)<br>
-    <p></p>
-    ♢♦♢♦サイドメニュー♢♦♢♦♢<br>
-    プチ紋甲イカ/有頭エビ/イイダコ<br>
-    ビビンバ
-    サンチュ/チョレギサラダ/シーザーサラダ/安安サラダ
-    韓国のり/梅干し/薬味ネギ<br>
-    バターフォンデュ<br>
-    シューアイス/生チョコアイス/ロイヤルミルクティーアイス/バニラアイス
-    </h5>
-    
-    <h3 id="2">【食べ放題】♦♢満腹コース♢♦2800円(税込)</h3>
-    <img src="images/meat2.jpg">
-    <h3>コース内容</h3>
-    <h5>♢♦♢♦肉メニュー♢♦♢♦<br>
-    カルビ（タレ・塩)<br>
-    ハラミ（タレ・塩)<br>
-    やわらか漬けハラミ<br>
-    赤身ロース（タレ・塩）<br>
-    牛上ホルモン（塩・にんにく塩・激辛）<br>
-    牛レバー（味噌）<br>
-    <p></p>
-    ◇◆◇◆サイドメニュー◇◆◇◆<br>
-    白菜キムチ/カクテキ/ピリ辛キュウリ<br>
-    焼き野菜盛り合わせ/きのこ3種盛り合わせ<br>
-    明太ポテトサラダ<br>
-    エリンギバター/えのきバター/じゃがバター/コーンバター<br>
-    玉ねぎ/しいたけ/ヤングコーン/オクラ/エリンギ<br>
-    <h5>
-    <h3 id="3">【食べ放題】♦♢シンプルコース♢♦1900円(税込)</h3>
-    <img src="images/meat3.jpg">
-    <h3>コース内容</h3>
-    <h5>♢♦♢♦肉メニュー♢♦♢♦<br>
-        Vカルビ<br>
-    ヤングカルビ（タレ）<br>
-    トントロ（塩・激辛）<br>
-    豚カルビ（塩・激辛）<br>
-    ブタタン<br>
-    ポークウインナー<br>
-    バジル豚カルビ<br>
-    とりもも（塩・激辛）<br>
-    ヤゲン軟骨（塩・激辛）<br>
-    鶏せせり（塩・激辛）<br>
-    ピリ辛やみつき鶏<br>
-    豚ホルモン（塩・にんにく塩・激辛）<br>
-        ◇◆◇◆サイドメニュー◇◆◇◆<br>
-        ライス（中・小）<br>
-    塩キャベツ/塩キャベツハーフ<br>
-    キャベチョレギ/キャベチョレギハーフ<br>
-    もやしナムル/キクラゲナムル/小松菜ナムル<br>
-    ポテトサラダ<br>
-    
+
+	<?php
+	//MySQLデータベースに接続する
+	require 'db_connect.php';
+	//SQL文を作る（プレースホルダを使った式）
+	$sql = "select * from course where id = :id";
+	//プリペアードステートメントを作る
+	$stm = $pdo->prepare($sql);
+	//プリペアードステートメントに値をバインドする
+	$stm->bindValue(':id',$_REQUEST['id'],PDO::PARAM_STR);
+	//SQL文を実行する
+	$stm->execute();
+	//結果の取得（連想配列で受け取る）
+	$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+
+  foreach ($result as $row ) {
+  ?>
+  <div class="explanatory-text">
+    <img class="course-image" src="images/<?= $row['image_name'] ?>"> 
+    <h2> <?= $row['name'       ] ?>  </h2>
+	<p>  <?= $row['price'      ] ?>円</p>
+    <p>  <?= $row['description'] ?>  </p>
+	<div class="detail">
+    <p>  <?= $row['detail'     ] ?>  </p>
+	</div>
+
+	<a href="menu.php">戻る</a>
+	
+	
+  </div>
+  <?php } ?>
+
+
+  
+  
+  
+  
+<br><br><br>
+デザインの参考にしたいページ<a href="https://www.dennys.jp/menu/hamburg/grated-hamburger&fried-shrimp/">https://www.dennys.jp/menu/hamburg/grated-hamburger&fried-shrimp/</a>
 </body>
 </html>

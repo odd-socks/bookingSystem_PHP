@@ -1,0 +1,73 @@
+ul, li {
+  list-style: none;
+}
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+#header-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#header-item {
+  font-size: 16px;
+  padding:0 24px;
+}
+
+#header-link {
+  padding: 20px 0;
+  transition: .3s;
+  color: black;
+}
+
+#reservation dl dt,
+#reservation dl dd {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+ 
+#reservation dl dt {
+  width: 10em;
+  float: left;
+  clear: both;
+  font-weight: bold;
+}
+ 
+#reservation dl dd {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  margin-left: 10em;
+}
+ 
+#reservation #num2,
+#reservation #num3,
+#reservation #num4,
+#reservation #num5,
+#reservation #num6 {
+  margin-left: 15px;
+}
+ 
+#reservation #submit_button_cover {
+  text-align: center;
+}
+ 
+#reservation #submit_button {
+  background-color: #ddd;
+  border: 10px solid #ddd;
+  padding: 5px 80px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+ 
+#reservation #submit_button:hover {
+  background-color: black;
+  border-color: black;
+}

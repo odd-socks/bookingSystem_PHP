@@ -40,12 +40,12 @@
         </a>
       </li>
       <li class="header-item">
-  <?php if (!isset($_SESSION)){  //未ログインなら'ログイン'と表示 ?>
+  <?php if (!isset($_SESSION['user'])){  //未ログインなら'ログイン'と表示 ?>
           <a href="login.php">
             <span class="header-item-child">ログイン</span>
           </a>
   <?php } else {                 //ログイン済みなら'ログアウト'と表示 ?>
-          <a href="login.php">
+          <a href="logout.php">
             <span class="header-item-child">ログアウト</span>
           </a>
   <?php } ?>
@@ -54,7 +54,7 @@
           <a href="#">
             <span class="header-item-child">
               <?php
-                if (!isset($_SESSION)){  //未ログインなら名前を表示
+                if (isset($_SESSION['user'])){  //未ログインなら名前を表示
                   echo $_SESSION['user']['name']; 
                 } else {
                   echo 'ゲスト';          //ログイン済みなら'ゲスト'と表示

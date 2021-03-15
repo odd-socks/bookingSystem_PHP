@@ -19,8 +19,10 @@
 	//userセッションの設定
 	foreach ($result as $row) {
 		$_SESSION['user'] = [
-			'id' => $row['id'], 'name' => $row['name'],
-			'password' => $row['password']
+			'id'       => $row['id'],
+			'tell'     => $row['tell'],
+			'name'     => $row['name'],
+			'password' => $row['password'],
 		];
 	}
 ?>

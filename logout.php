@@ -10,12 +10,7 @@
   <title>ログアウト</title>
 </head>
 <body>
-  <?php
-    require 'header.php';
-
-    echo 'ログアウトしました。';
-
-    require 'footer.php';
-  ?>
+  <?php require 'header.php';?>
+  <p>ログアウトしました。</p>
 </body>
 </html>

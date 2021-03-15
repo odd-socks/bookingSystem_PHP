@@ -4,42 +4,88 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title肉</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />  <!--リセットCSS-->
+  <link rel="stylesheet" href="css/matsumaru.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <title>焼肉屋さんですよ</title>
 </head>
 <body>
-  <h1>焼肉屋です。</h1>
   <header>
     <nav>
-      <ul>
-        <li>トップ</li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul class="main-nav">
+        <li class="header-item"><a href="index.php"><span class="header-item-child">トップ</span></a></li>
+        <li class="header-item"><a href="menu.php"><span class="header-item-child">メニュー</span></a></li>
+        <li  class="header-item logo"><a href="index.php"><img class="logo" src="images/logo.png" alt=""></a></li>
+        <li class="header-item"><a href="confirm.php"><span class="header-item-child">お知らせ</span></a></li>
+        <li class="header-item"><a href="calendar.php"><span class="header-item-child">ご予約</span></a></li>
       </ul>
     </nav>
   </header>
 
 
-<?php
-	require 'db_connect.php';
-	//SQL文を作る（プレースホルダを使った式）
-	$sql = "select * from user ";
-	//プリペアードステートメントを作る
-	$stm = $pdo->prepare($sql);
-	//SQL文を実行する
-	$stm->execute();
-	//結果の取得（連想配列で受け取る）
-	$result = $stm->fetchAll(PDO::FETCH_ASSOC);
-  echo '<ul>';
-  foreach ($result as $row) {
-    echo " <li>{$row['name']}</li>";
-  }
-  // print_r($result);
-echo '</ul>'
-?>
+  <div class="main-visual">
+    <img class="main-img" src="images/sample.jpg" alt="">
+    <ul class="flex">
+      <li class="item1">
+        <a href="#article">
+          食べ放題新コース<br>
+          <img src="https://beer.uenodebal.com/images/common/ico_arrow01.png" alt="">
+        </a>
+      </li>
+      <li class="item2">
+        <a href="#topi">
+          トピックス<br>
+          <img src="https://beer.uenodebal.com/images/common/ico_arrow01.png" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
+  <main id="article" class="wrapper">
+    <div class="article1">
+      <div class="img-container">
+        <img class="art-img" src="images/article-image2.jpg" alt="">
+      </div>
+      <div class="text-cont">
+        <p>美味しそうなお肉。美味しそうなお肉。美味しそうなお肉。</p>
+      </div>
+    </div>
+    <div class="article2">
+      <div class="img-cont">
+        <img class="art-img" src="images/article-image1.jpg" alt="">
+      </div>
+      <div class="text-container">
+        <p>あなたが落としたのはオーストラリア産豚カルビですか？それとも国産黒毛和牛ですか？</p>
+      </div>
+    </div>
+  </main>
 
+<div class="bg-color">
+  <div id="topi" class="wrapper topics">
+    <h2>トピックス</h2>
+    <div class="topi-cont">
+      <div class="topi-item">
+        <a href="menu.php"><img src="images/topics2.jpg" alt=""></a>
+      </div>
+      <div class="topi-item">
+        <a href="menu.php"><img src="images/topics1.jpg" alt=""></a>
+      </div>
+      <div class="topi-item">
+        <a href="calendar.php"><img src="images/topics3.jpg" alt=""></a>
+      </div>
+    </div>
+  </div>
+</div>
 
+  <footer>
+    <p>会社概要 ｜ プライバシーポリシー</p>
+    <small>&copy;ジャニー焼肉店 コピーライトってなんですか？</small>
+  </footer>
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
+
+

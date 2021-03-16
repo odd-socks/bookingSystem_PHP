@@ -16,7 +16,7 @@
         <li class="header-item"><a href="index.php"><span class="header-item-child">トップ</span></a></li>
         <li class="header-item"><a href="menu.php"><span class="header-item-child">メニュー</span></a></li>
         <li  class="header-item logo"><a href="index.php"><img class="logo" src="images/logo.png" alt=""></a></li>
-        <li class="header-item"><a href="confirm.php"><span class="header-item-child">お知らせ</span></a></li>
+        <li class="header-item"><a href="reservation.php"><span class="header-item-child">お知らせ</span></a></li>
         <li class="header-item"><a href="calendar.php"><span class="header-item-child">ご予約</span></a></li>
       </ul>
     </nav>

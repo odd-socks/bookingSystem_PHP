@@ -15,3 +15,9 @@ $(function(){  //アニメーションスクロールのメソッド
     return false;
   });
 });
+
+function showDetail(num) {
+  let target = 'detail' + num;
+  let detail = document.getElementById(target);
+  detail.classList.toggle('none');
+}

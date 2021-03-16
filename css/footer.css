@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+
+footer{
+  margin-top: 5px;
+  height: 100px;
+  color: rgb(255,255,255);
+  background-color: rgb(37,	37,	37);
+  text-align: center;
+  padding-top: 32px;
+}

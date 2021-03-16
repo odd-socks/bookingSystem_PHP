@@ -3,19 +3,24 @@ form {
  }
  h1 {
      font-size: 30px;
-     margin-left: 350px;
+     margin-left: 420px;
  }
  h2 {
      font-size: 30px;
-     margin-left: 350px;
+     margin-left: 420px;
  }
  h3 {
      margin-top: -10px;
      font-size: 30px;
-     margin-left: 700px;
+     margin-left: 765px;
  }
  input[type=text]{
-     width:200px; 
+     width:250px; 
      height:25px;
      margin-top: -10px;
  }
+ input[type=password]{
+    width:250px; 
+    height:25px;
+    margin-top: -10px;
+}

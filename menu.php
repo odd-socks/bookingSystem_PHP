@@ -42,9 +42,10 @@
           <div class="item2 flex-dir-col">
             <p class="border-bottom"> <?= $row['description'] ?> </p>
 
-            <div class="border-bottom">
-            <p class="border">コース品数: <?= $row['number'] ?>/利用人数:1名～</p>
-            </div>
+            
+            <p class="border-bottom">コース品数: <?= $row['number'] ?>品/利用人数:1名～</p>
+            <p class="border-bottom">時間:90分</p>
+            
             
             <div class="price-space">
               <span class="price-number"><?= $row['price'] ?></span>

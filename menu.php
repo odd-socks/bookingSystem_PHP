@@ -6,9 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />  <!--リセットCSS-->
   <link rel="stylesheet" href="css/menu.css">
+  <?php require_once('header.php'); ?>
   <title>コース一覧</title>
 </head>
 <body>
+<center>
+<h1>メニュー</h1>
+</center>
 <?php
   require 'db_connect.php';
   //SQL文を作る（プレースホルダを使った式）
@@ -62,7 +66,7 @@
     
 
 <?php } ?>
+<?php require_once('footer.html'); ?>
 
 </body>
 </html>
-<?php ?>

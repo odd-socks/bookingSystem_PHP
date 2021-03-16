@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.explanatory-text{
+    text-align:center;
+}
+.course-image {
+    width: 600px;
+    height: 400px;
+}
+
+.detail{
+    background-color: #fcecfc;
+    text-align:center;
+}
+
+.button {
+    background-color: rgb(48, 173, 229);
+    color: white;
+    height: 35px;
+    width: 50px;
+    border-radius: 7px;
+  }

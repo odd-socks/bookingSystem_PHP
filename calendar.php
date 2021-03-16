@@ -11,7 +11,7 @@
   <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<?php require_once('header.php'); ?>
+<?php require_once('header.php'); ?>  <!--ヘッダーの呼び出し-->
   <h1 class="calendar-title">ご予約・空き状況確認</h1>
   
   <table class="calendar">
@@ -27,27 +27,30 @@
     </tr>
     <tr>
       <?php 
-        $date = 1;
+        $date = 1;  //カレンダーに日付を表示する時に使う
         $year       = date('Y');  //今年の西暦
         $month      = date('n');  //今月の月
         
         $timestanp  = strtotime($year . '-' . $month . '-1');  //今月1日のタイムスタンプをY-m-d表記から求める
         $start_date = date('w', $timestanp);                   //今月1日の曜日(0~6)
         
-        $target_date  = $year . '-' . ++$month . '-1';              //来月1日のY-m-d表記
-        $end_date   = date("j", strtotime("$target_date -1 day"));  //今月の最終日
+        $target_date  = $year . '-' . ++$month . '-1';                //来月1日のY-m-d表記
+        $end_date     = date("j", strtotime("$target_date -1 day"));  //今月の最終日
         
-        $month      = date('n');  //今月の月（空席確認の詳細表示で使用するため今月の月に戻しておく）
+        $month = date('n');  //今月の月（空席確認の詳細表示で使用するため今月の月に戻しておく）
         
-        require 'db_connect.php';                    //DB接続
-        $sql = "select sum(seats_number) as seats_num from time group by date";  //日付ごとに空席数を集計して取得
+        //timeテーブルから日付ごとに空席数を集計して取得
+        require 'db_connect.php';                    //DB接続設定ファイルの読み込み
+        $sql = "select sum(seats_number) as seats_num from time group by date";
         $stm = $pdo->prepare($sql);
         $stm->execute();                             //SQL実行
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);  //結果を$resultに連想配列で格納
         
-        for ($i=0; $i < 35; $i++) {  // カレンダーの表示
+        // カレンダーの表示
+        for ($i=0; $i < 35; $i++) {
           echo '<td class="calendar-td">';
-            if ($start_date <= $i && $date <= $end_date) {  //1日から順に日付を入れる
+            //1日から順に日付を入れる
+            if ($start_date <= $i && $date <= $end_date) {
               $today = $year. '-'. $month. '-'. $date;  //その日の日付のY-m-d表記
               
               // 曜日ごとの色分け
@@ -71,7 +74,7 @@
                   echo '◯';
                 } elseif ($seats_num > 0) {   //空席数が1以上なら△
                   echo '△';
-                } else {                      //空席数が12以上なら×
+                } else {                      //空席数が0なら×
                   echo '×';
                 }
                 echo '</button>';
@@ -81,15 +84,17 @@
                 echo '</button>';
               }
               
-              //その日の空席状況
-              echo '<div id="detail'. $date . '" class="detail none">';
-              $sql2 = "select * from time where date = :date";  // purchase テーブルの customer_id が session_id のレコードを取り出すSQL文
-              $stm2 = $pdo->prepare($sql2);
-              $stm2->bindValue(':date',$today, PDO::PARAM_INT);  //その日の日付Y-m-d表記でDB検索
-              $stm2->execute();
-              $result2 = $stm2->fetchAll(PDO::FETCH_ASSOC);
-              // print_r($result2);
-              ?>
+              //その日の空席状況を表示
+              echo '<div id="detail'. $date . '" class="detail none">';  //初期値はdisplay-noneで非表示
+              
+                //timeテーブルからその日の日付のデータを取り出すSQL
+                $sql2 = "select * from time where date = :date";
+                $stm2 = $pdo->prepare($sql2);
+                $stm2->bindValue(':date',$today, PDO::PARAM_INT);  //$dateにその日の日付をバインド
+                $stm2->execute();
+                $result2 = $stm2->fetchAll(PDO::FETCH_ASSOC);
+                // print_r($result2);
+      ?>
                 <table>
                   <tr>
                     <th></th>
@@ -134,7 +139,8 @@
             }
           echo '</td>';
           
-          if (($i + 1) % 7 === 0) {  //7日おきに改行
+          //7日おきに改行
+          if (($i + 1) % 7 === 0) {
             echo '</tr><tr>';
           }
         }
@@ -143,7 +149,7 @@
   </table>
   
   
-  <?php require 'footer.html' ?>
+  <?php require 'footer.html' ?>  <!--フッターの呼び出し-->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/script.js"></script>
 </body>

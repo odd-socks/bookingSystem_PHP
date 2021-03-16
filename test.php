@@ -1,13 +1,13 @@
   <?php 
     session_start();
 
-    //セッションにカレンダーからGet通信で送られてきた値をセット
+    //カレンダーからGet通信で送られてきた情報をセッションにセット
     $_SESSION['reservation'] = [
 			'date'       => $_GET['date']     ,
 			'time'       => $_GET['time']     ,
 			'seat_type'  => $_GET['seat_type'],
 		];
-    print_r($_SESSION);
+
 
     // 時間を 20:00:00 から 20:00 表記に直す方法
     // ・文字列の取り出し
@@ -16,7 +16,7 @@
     
 
     // reservation_form.phpにリダイレクト
-    $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-    header("Location:" . $url . '/reservation_form.php');
+    $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/reservation_form.php';
+    header("Location:" . $url);
     exit();
   ?>

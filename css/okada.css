@@ -1,3 +1,26 @@
- h1 {
-     margin-left: 100px;
+form {
+    margin-top: 190px;
  }
+ h1 {
+     font-size: 30px;
+     margin-left: 420px;
+ }
+ h2 {
+     font-size: 30px;
+     margin-left: 420px;
+ }
+ h3 {
+     margin-top: -10px;
+     font-size: 30px;
+     margin-left: 765px;
+ }
+ input[type=text]{
+     width:250px; 
+     height:25px;
+     margin-top: -10px;
+ }
+ input[type=password]{
+    width:250px; 
+    height:25px;
+    margin-top: -10px;
+}

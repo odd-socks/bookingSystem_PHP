@@ -5,16 +5,30 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン画面</title>
-    <link rel="stylesheet" href="okada.css">
+    <link rel="stylesheet" href="css/okada.css">
 </head>
 
 <body>
     <form action="login_comp.php" method="post">
-        <h1>ログイン名</h1>
-          <input type="text" size="35" name="login"><br>
-        <h1>パスワード
-          <input type="password" size="35" name="password"></h1><br>
-          <input type="submit" value="ログイン">
+    <table>
+      <tr>
+        <td>
+          <h1>ログイン名</h1>
+        </td>
+        <td>
+          <input type="text"  name="login"><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>パスワード</h2>
+        </td>
+        <td>
+          <input type="password"  name="password"><br>
+        </td>
+      </tr>
+    </table>
+          <h3><input type="submit" value="ログイン"></h3>
     </form>
 </body>
 

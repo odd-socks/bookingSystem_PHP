@@ -1,8 +1,4 @@
-<?php
-  session_start(); 
-  unset($_SESSION['user']);  //customerのセッションの破棄
-?>
-
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +6,10 @@
   <title>ログアウト</title>
 </head>
 <body>
-  <?php require 'header.php';?>
+<?php
+  unset($_SESSION['user']);
+  require 'header.php';
+?>
   <p>ログアウトしました。</p>
 </body>
 </html>

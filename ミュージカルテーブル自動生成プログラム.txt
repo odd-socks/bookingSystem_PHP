@@ -1,0 +1,41 @@
+<?php
+  $start_date    = 15 ;  //何日からのレコードか（日）
+  $end_date      = 31;  //何日までのレコードか（日）
+  $date_interval = 1 ;  //何日おきに生成するか（日）
+
+  $start_hour    = 10;  //何時からのレコードか（時）
+  $end_hour      = 20;  //何時までのレコードか（時）
+  $hour_interval = 5 ;  //何時間ごとに作るか（時）
+//対象のテーブルはプリペアードステートメント内で直接指定すること
+
+
+
+  for ($d = $start_date; $d <= $end_date ; $d += $date_interval) { 
+    if ($d < 10) {
+      $d = 0 . $d;
+    }
+    $date = '2021-03-' . (string)$d;
+    for ($h = $start_hour; $h <= $end_hour; $h += $hour_interval) { 
+      $time = $h . ':00';
+      $types = ['ライオンキング', 'CATS', 'アラジン', 'オペラ座の怪人'];
+      foreach ($types as $type ) {
+        echo $date.' '.$time.$type . '<br>';
+
+        for ($i=1; $i <= 4; $i++) { 
+          require 'db_connect.php';
+          //SQL文を作る（プレースホルダを使った式）
+          $sql = "INSERT INTO `musical` (`musical_id`, `date`, `time`, `musical_name`, `musical_seat`) VALUES (NULL, :datee, :timee, :typee, :seat_num);";
+          //プリペアードステートメントを作る
+          $stm = $pdo->prepare($sql);
+          $stm->bindValue(':datee'      , $date        , PDO::PARAM_STR);
+          $stm->bindValue(':timee'      , $time        , PDO::PARAM_STR);
+          $stm->bindValue(':typee'      , $type        , PDO::PARAM_STR);
+          $stm->bindValue(':seat_num'  , $i            , PDO::PARAM_STR);
+          //SQL文を実行する
+          $stm->execute();
+          
+        }
+      }
+    }
+  }
+?>

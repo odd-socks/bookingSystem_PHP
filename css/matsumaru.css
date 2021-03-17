@@ -253,6 +253,12 @@ ul{
 .detail table td{
   border: 1px solid #000;
 }
+.seat-num:hover{
+  color: red;
+}
+.seat-num{
+  color: rgb(32,	23,	21);
+}
 
 
 

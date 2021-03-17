@@ -24,7 +24,7 @@
           </a>
         </li>
         <li class="header-item">
-          <a href="confirm.php">
+          <a href="information.php">
             <span class="header-item-child">お知らせ</span>
           </a>
         </li>

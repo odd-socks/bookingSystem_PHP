@@ -6,9 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />  <!--リセットCSS-->
   <link rel="stylesheet" href="css/menu.css">
+  <?php require_once('header.php'); ?>
   <title>コース一覧</title>
 </head>
 <body>
+<center>
+<h1>メニュー</h1>
+</center>
 <?php
   require 'db_connect.php';
   //SQL文を作る（プレースホルダを使った式）
@@ -42,9 +46,10 @@
           <div class="item2 flex-dir-col">
             <p class="border-bottom"> <?= $row['description'] ?> </p>
 
-            <div class="border-bottom">
-            <p class="border">コース品数: <?= $row['number'] ?>/利用人数:1名～</p>
-            </div>
+            
+            <p class="border-bottom">コース品数: <?= $row['number'] ?>品/利用人数:1名～</p>
+            <p class="border-bottom">時間:90分</p>
+            
             
             <div class="price-space">
               <span class="price-number"><?= $row['price'] ?></span>
@@ -61,7 +66,7 @@
     
 
 <?php } ?>
+<?php require_once('footer.html'); ?>
 
 </body>
 </html>
-<?php ?>

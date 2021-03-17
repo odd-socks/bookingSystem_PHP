@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +10,7 @@
 </head>
 
 <body>
+ <?php require 'header.php' ?>
     <form action="login_comp.php" method="post">
     <table>
       <tr>

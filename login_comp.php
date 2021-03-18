@@ -10,8 +10,8 @@
 	//プリペアードステートメントを作る
 	$stm = $pdo->prepare($sql);
 	//プリペアードステートメントに値をバインドする
-	$stm->bindValue(':login_name',$_POST['login'],PDO::PARAM_STR);
-	$stm->bindValue(':password',$_POST['password'],PDO::PARAM_STR);
+	$stm->bindValue(':login_name',$_POST['login']   ,PDO::PARAM_STR);
+	$stm->bindValue(':password'  ,$_POST['password'],PDO::PARAM_STR);
 	//SQL文を実行する
 	$stm->execute();
 	//結果の取得（連想配列で受け取る）
@@ -43,7 +43,7 @@
 	} else {
 		echo 'ログイン名またはパスワードが違います。';
 	}
-	?>
+?>
 </body>
 
 </html>

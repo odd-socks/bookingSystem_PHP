@@ -11,8 +11,8 @@
 <?php 
     require_once 'header.php';  //ヘッダーの呼び出し
     $_SESSION['people'] = $_POST['people'];  //前ページで入力された人数は新たにセッションpeopleに保存
-?>
-    <form action="POST" action="complete.php" > 
+?><div class="">
+    <form class="kousu" action="POST" action="complete.php" > 
         <table>
             <tr>
                 <td>お名前</td>
@@ -34,5 +34,6 @@
             <input type="button" value="訂正" onclick="location.href='reservation_form.php'">
             <input type="button" value="確定" onclick="location.href='complete.php'">
     </form>
+</div>
 </body>
 </html>

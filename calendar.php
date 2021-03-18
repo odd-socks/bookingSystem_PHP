@@ -11,8 +11,10 @@
   <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<?php require_once('header.php'); ?>  <!--ヘッダーの呼び出し-->
-  <h1 class="calendar-title">ご予約・空き状況確認</h1>
+  <?php require_once('header.php'); ?>  <!--ヘッダーの呼び出し-->
+  <div class="wrapper">
+    <h1 class="calendar-title">ご予約・空き状況確認</h1>
+  </div>
   
   <table class="calendar">
     <caption class="cap">2021年３月</caption>

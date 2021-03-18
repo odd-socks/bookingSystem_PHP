@@ -26,7 +26,7 @@
           </a>
         </li>
         <li class="header-item">
-          <a href="confirm.php">
+          <a href="information.php">
             <span class="header-item-child">お知らせ</span>
           </a>
         </li>
@@ -96,7 +96,7 @@
       </div>
       <div class="text-cont">
         <p>美味しそうなお肉。美味しそうなお肉。美味しそうなお肉。</p>
-        <p>当プロジェクトはまもなく単独デスマーチに突入いたします。</p>
+        <p>新しくはじまった贅沢コースです。</p>
       </div>
     </div>
     <div class="article2">
@@ -104,13 +104,14 @@
         <img class="art-img" src="images/article-image1.jpg" alt="">
       </div>
       <div class="text-container">
-        <p>あなたが落としたのはオーストラリア産豚カルビですか？それとも国産黒毛和牛ですか？</p>
+        <p>国産黒黒毛和牛のカルビです。</p>
+        <p>美味しそうなお肉。美味しそうなお肉。美味しそうなお肉。</p>
       </div>
     </div>
   </main>
 
-  <div class="bg-color">
-    <div id="topi" class="wrapper topics">
+  <div id="topi" class="bg-color">
+    <div class="wrapper topics">
       <h2>トピックス</h2>
       <div class="topi-cont">
         <div class="topi-item">

@@ -1,6 +1,6 @@
-
+<?php require_once('header.php'); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>

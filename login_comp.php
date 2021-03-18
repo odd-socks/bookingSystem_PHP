@@ -37,6 +37,7 @@
 </head>
 <body>
 	<?php
+	require_once('header.php');
 	if (isset($_SESSION['user'])) {
 		echo 'いらっしゃいませ、', $_SESSION['user']['name'], 'さん。';
 	} else {

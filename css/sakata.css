@@ -71,3 +71,7 @@ ul, li {
   background-color: black;
   border-color: black;
 }
+.wrapper{
+  max-width: 1100px;
+  margin: 0 auto;
+}
